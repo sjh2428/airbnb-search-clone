@@ -40,6 +40,10 @@ const model = (sequelize, DataTypes) => {
     },
   );
 
+  Host.associate = models => {
+    Host.hasMany(models.tbl_rooms);
+  };
+
   return Host;
 };
 

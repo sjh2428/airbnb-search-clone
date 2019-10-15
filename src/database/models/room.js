@@ -104,6 +104,12 @@ const model = (sequelize, DataTypes) => {
     },
   );
 
+  Room.associate = models => {
+    Room.belongsTo(models.tbl_hosts, {
+      foreignKey: 'host_id',
+    });
+  };
+
   return Room;
 };
 
