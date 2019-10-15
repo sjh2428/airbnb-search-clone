@@ -1,0 +1,6 @@
+{
+  "verbose": false,
+  "delay": 3000,
+  "exec": "babel-node src/bin/www.js",
+  "ignore": []
+}
