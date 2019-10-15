@@ -8,7 +8,7 @@ const model = (sequelize, DataTypes) => {
         allowNull: false,
       },
       room_url: {
-        type: DataTypes.STRING(65535),
+        type: DataTypes.STRING(2083),
         allowNull: false,
       },
       room_name: {
@@ -20,7 +20,7 @@ const model = (sequelize, DataTypes) => {
         allowNull: false,
       },
       room_picture_url: {
-        type: DataTypes.STRING(65535),
+        type: DataTypes.STRING(2083),
         allowNull: false,
       },
       city: {

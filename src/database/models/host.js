@@ -16,15 +16,15 @@ const model = (sequelize, DataTypes) => {
         allowNull: false,
       },
       host_url: {
-        type: DataTypes.STRING(65535),
+        type: DataTypes.STRING(2083),
         allowNull: false,
       },
       host_thumbnail_url: {
-        type: DataTypes.STRING(65535),
+        type: DataTypes.STRING(2083),
         allowNull: false,
       },
       host_picture_url: {
-        type: DataTypes.STRING(65535),
+        type: DataTypes.STRING(2083),
         allowNull: false,
       },
       super_host: {
