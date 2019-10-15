@@ -34,15 +34,6 @@ const model = (sequelize, DataTypes) => {
     },
   );
 
-  Reservation.associate = models => {
-    Reservation.belongsTo(models.tbl_users, {
-      foreignKey: 'user_id',
-    });
-    Reservation.belongsTo(models.tbl_rooms, {
-      foreignKey: 'room_id',
-    });
-  };
-
   return Reservation;
 };
 

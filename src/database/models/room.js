@@ -64,7 +64,7 @@ const model = (sequelize, DataTypes) => {
         allowNull: false,
       },
       amenities: {
-        type: DataTypes.STRING(1000),
+        type: DataTypes.STRING(10000),
         allowNull: false,
       },
       price: {
@@ -104,12 +104,6 @@ const model = (sequelize, DataTypes) => {
       paranoid: true,
     },
   );
-
-  Room.associate = models => {
-    Room.belongsTo(models.tbl_hosts, {
-      foreignKey: 'host_id',
-    });
-  };
 
   return Room;
 };

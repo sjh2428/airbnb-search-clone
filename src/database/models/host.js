@@ -8,11 +8,11 @@ const model = (sequelize, DataTypes) => {
         allowNull: false,
       },
       host_name: {
-        type: DataTypes.STRING(20),
+        type: DataTypes.STRING(50),
         allowNull: false,
       },
       host_location: {
-        type: DataTypes.STRING(60),
+        type: DataTypes.STRING(500),
         allowNull: false,
       },
       host_url: {
