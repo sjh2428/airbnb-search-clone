@@ -26,6 +26,7 @@ const model = (sequelize, DataTypes) => {
       },
     },
     {
+      underscored: true,
       freezeTableName: true,
       tableName: 'tbl_reservations',
       timestamps: true,

@@ -33,16 +33,13 @@ const model = (sequelize, DataTypes) => {
       },
     },
     {
+      underscored: true,
       freezeTableName: true,
       tableName: 'tbl_hosts',
       timestamps: true,
       paranoid: true,
     },
   );
-
-  Host.associate = models => {
-    Host.hasMany(models.tbl_rooms);
-  };
 
   return Host;
 };

@@ -17,16 +17,13 @@ const model = (sequelize, DataTypes) => {
       },
     },
     {
+      underscored: true,
       freezeTableName: true,
       tableName: 'tbl_users',
       timestamps: true,
       paranoid: true,
     },
   );
-
-  User.associate = models => {
-    User.hasMany(models.tbl_reservations);
-  };
 
   return User;
 };
