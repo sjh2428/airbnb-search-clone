@@ -108,6 +108,7 @@ const model = (sequelize, DataTypes) => {
     Room.belongsTo(models.tbl_hosts, {
       foreignKey: 'host_id',
     });
+    Room.hasMany(models.tbl_reservations);
   };
 
   return Room;

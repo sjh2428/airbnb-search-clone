@@ -24,6 +24,10 @@ const model = (sequelize, DataTypes) => {
     },
   );
 
+  User.associate = models => {
+    User.hasMany(models.tbl_reservations);
+  };
+
   return User;
 };
 
