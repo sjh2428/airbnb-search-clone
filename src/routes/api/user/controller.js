@@ -21,19 +21,6 @@ const controller = {
       res.status(500).end();
     }
   },
-  async getWithId(req, res) {
-    const { id } = req.params;
-    try {
-      const user = await models[tblName.user].findOne({
-        where: {
-          user_id: id,
-        },
-      });
-      res.json(user);
-    } catch (e) {
-      res.status(500).end();
-    }
-  },
 };
 
 export default controller;
