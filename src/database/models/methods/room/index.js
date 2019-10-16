@@ -1,10 +1,10 @@
-import dbName from '../../../name';
+import tblName from '../../../name';
 import models from '../../../index';
 
 const room = {};
 
 room.create = async newRoomObj => {
-  const res = await models[dbName.room].bulkCreate([
+  const res = await models[tblName.room].bulkCreate([
     {
       room_url: newRoomObj.roomUrl,
       room_name: newRoomObj.roomName,

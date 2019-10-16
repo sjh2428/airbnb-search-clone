@@ -1,6 +1,8 @@
+import tblName from '../name';
+
 const model = (sequelize, DataTypes) => {
   const Host = sequelize.define(
-    'tbl_hosts',
+    tblName.host,
     {
       host_id: {
         type: DataTypes.INTEGER.UNSIGNED,
@@ -36,7 +38,7 @@ const model = (sequelize, DataTypes) => {
     {
       underscored: true,
       freezeTableName: true,
-      tableName: 'tbl_hosts',
+      tableName: tblName.host,
       timestamps: true,
       paranoid: true,
     },

@@ -1,6 +1,8 @@
+import tblName from '../name';
+
 const model = (sequelize, DataTypes) => {
   const User = sequelize.define(
-    'tbl_users',
+    tblName.user,
     {
       user_id: {
         type: DataTypes.STRING(30),
@@ -19,7 +21,7 @@ const model = (sequelize, DataTypes) => {
     {
       underscored: true,
       freezeTableName: true,
-      tableName: 'tbl_users',
+      tableName: tblName.user,
       timestamps: true,
       paranoid: true,
     },
