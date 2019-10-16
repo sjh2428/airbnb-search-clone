@@ -10,4 +10,6 @@ reservation
   .get(onlyPrivate, controller.get)
   .post(onlyPrivate, controller.post);
 
+reservation.route('/:id').get(onlyPrivate, controller.getByRoomId);
+
 export default reservation;
