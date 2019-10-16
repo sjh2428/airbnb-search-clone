@@ -1,6 +1,7 @@
 import models from '../../../database';
 import tblName from '../../../database/name';
 
+// url: /api/room
 const controller = {
   async post(req, res) {
     const {
