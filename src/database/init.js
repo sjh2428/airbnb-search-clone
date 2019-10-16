@@ -1,19 +1,18 @@
-// (hosts: 1547 rows, rooms: 2250 rows)
+// (hosts: 966 rows, rooms: 2250 rows)
 import _ from '../fx';
 import models from './index';
 
-const csvFilePath = './listings.csv';
 const csv = require('csvtojson');
 
 const getMoney = _.map(price => (price !== '' ? Number(price.slice(1)) : 0));
 const toNumber = _.map(str => Number(str));
 
-const init = () => {
+const init = csvFilePath => {
   console.log('injecting init data');
   csv()
     .fromFile(csvFilePath)
-    .then(jsonObj => {
-      jsonObj.forEach(async obj => {
+    .then(async jsonObj => {
+      for (const obj of jsonObj) {
         let {
           id: roomId,
           listing_url: roomUrl,
@@ -54,12 +53,8 @@ const init = () => {
         const prices = [price, weeklyPrice, monthlyPrice, pricePerExtraPeople];
         [price, weeklyPrice, monthlyPrice, pricePerExtraPeople] = getMoney(prices);
 
-        await models.tbl_rooms.findOrCreate({
-          where: {
-            room_id: roomId,
-          },
-          defaults: {
-            room_id: roomId,
+        try {
+          await models.tbl_rooms.create({
             room_url: roomUrl,
             room_name: roomName,
             room_summary: roomSummary,
@@ -82,26 +77,26 @@ const init = () => {
             reviewers,
             reviews_score: reviewsScore,
             host_id: hostId,
-          },
-        });
-
-        await models.tbl_hosts.findOrCreate({
-          where: {
-            host_id: hostId,
-          },
-          defaults: {
-            host_id: hostId,
-            host_name: hostName,
-            host_location: hostLocation,
-            host_url: hostUrl,
-            host_thumbnail_url: hostThumbnailUrl,
-            host_picture_url: hostPictureUrl,
-            super_host: superhost,
-          },
-        });
-      });
+          });
+          await models.tbl_hosts.findOrCreate({
+            where: {
+              host_name: hostName,
+            },
+            defaults: {
+              host_name: hostName,
+              host_location: hostLocation,
+              host_url: hostUrl,
+              host_thumbnail_url: hostThumbnailUrl,
+              host_picture_url: hostPictureUrl,
+              super_host: superhost,
+            },
+          });
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      console.log('injecting done.');
     });
-  console.log('injecting done.');
 };
 
 export default init;
