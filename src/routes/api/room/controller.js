@@ -2,7 +2,7 @@ import models from '../../../database';
 import tblName from '../../../database/name';
 
 const controller = {
-  async post(req, res, next) {
+  async post(req, res) {
     const {
       room_id,
       room_url,
@@ -62,7 +62,14 @@ const controller = {
 
     res.status(201).end();
   },
-  get(req, res, next) {},
+  async get(req, res) {
+    let { where, limit, offset } = req.query;
+    where = where ? JSON.parse(where) : {};
+    if (!limit) limit = 20;
+    if (!offset) offset = 0;
+    const result = await models[tblName.room].findAndCountAll({ where, limit, offset });
+    res.json(result);
+  },
 };
 
 export default controller;
