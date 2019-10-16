@@ -2,7 +2,26 @@ import models from '../../../database';
 import tblName from '../../../database/name';
 
 const controller = {
-  post(req, res) {},
+  async post(req, res) {
+    try {
+      const { user_id, room_id, start_date, end_date } = req.body;
+      const result = await models[tblName.reservation].bulkCreate(
+        [
+          {
+            user_id,
+            room_id,
+            start_date,
+            end_date,
+          },
+        ],
+        { returning: true },
+      );
+      res.json(result);
+    } catch (e) {
+      console.log(e);
+      res.status(500).end();
+    }
+  },
   get(req, res) {},
   async getByRoomId(req, res) {
     const { id } = req.params;
