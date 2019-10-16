@@ -25,6 +25,15 @@ _.reduce = _.curry((f, acc, iter) => {
   return acc;
 });
 
+_.take = _.curry((l, iter) => {
+  const res = [];
+  for (const a of iter) {
+    res.push(a);
+    if (res.length === l) return res;
+  }
+  return res;
+});
+
 _.go = (...fs) => _.reduce((acc, f) => f(acc), fs);
 _.pipe = (f, ...fs) => (...as) => _.go(f(...as), fs);
 
