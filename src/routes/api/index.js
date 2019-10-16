@@ -6,8 +6,10 @@ import room from './room';
 const api = Router();
 
 // url: /api
-api.get('/', controller.get);
-api.post('/', controller.post);
+api
+  .route('/')
+  .get('/', controller.get)
+  .post('/', controller.post);
 
 api.use('/user', user);
 api.use('/room', room);
