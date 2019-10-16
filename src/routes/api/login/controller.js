@@ -5,9 +5,6 @@ import tblName from '../../../database/name';
 const controller = {
   async post(req, res) {
     const { id } = req.body;
-    const token = jwt.sign({ id: 'test2' }, process.env.JWT_KEY);
-    const decodeVal = jwt.verify(token, process.env.JWT_KEY);
-    console.log(token, decodeVal);
     try {
       const user = await models[tblName.user].findOne({
         where: {
@@ -17,7 +14,8 @@ const controller = {
       if (!user) {
         return res.status(401).json(user);
       }
-      res.cookie('jwt', token);
+      const token = jwt.sign(user, process.env.JWT_KEY);
+      res.cookie('jwttoken', token, { maxAge: 30 * 1000 });
       res.json(user);
     } catch (e) {
       res.status(500).end();
