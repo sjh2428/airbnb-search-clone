@@ -5,6 +5,7 @@ const model = (sequelize, DataTypes) => {
       room_id: {
         type: DataTypes.INTEGER.UNSIGNED,
         primaryKey: true,
+        autoIncrement: true,
         allowNull: false,
       },
       room_url: {
