@@ -9,6 +9,7 @@ const getMoney = _.map(price => (price !== '' ? Number(price.slice(1)) : 0));
 const toNumber = _.map(str => Number(str));
 
 const init = () => {
+  console.log('injecting init data');
   csv()
     .fromFile(csvFilePath)
     .then(jsonObj => {
@@ -100,6 +101,7 @@ const init = () => {
         });
       });
     });
+  console.log('injecting done.');
 };
 
 export default init;
