@@ -14,7 +14,10 @@ const controller = {
           user_id: id,
         },
       });
-      res.cookie('jwt', token, { maxAge: 30 * 1000 });
+      if (!user) {
+        return res.status(401).json(user);
+      }
+      res.cookie('jwt', token);
       res.json(user);
     } catch (e) {
       res.status(500).end();
