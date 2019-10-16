@@ -8,8 +8,8 @@ const api = Router();
 // url: /api
 api
   .route('/')
-  .get('/', controller.get)
-  .post('/', controller.post);
+  .get(controller.get)
+  .post(controller.post);
 
 api.use('/user', user);
 api.use('/room', room);
