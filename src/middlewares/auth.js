@@ -1,10 +1,11 @@
 import jwt from 'jsonwebtoken';
 
 const onlyPrivate = (req, res, next) => {
-  if (!req.cookies.jwttoken) {
+  if (!req.headers.Authorization) {
     res.redirect('/');
   } else {
-    req.user = jwt.verify(req.cookies.jwttoken, process.env.JWT_KEY);
+    const [_, token] = req.headers.Authorization.split(' ');
+    req.user = jwt.verify(token, process.env.JWT_KEY);
     next();
   }
 };
