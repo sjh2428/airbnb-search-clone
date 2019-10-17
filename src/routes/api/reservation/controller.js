@@ -5,15 +5,13 @@ const controller = {
   async post(req, res) {
     try {
       const { user_id, room_id, start_date, end_date } = req.body;
-      const result = await models[tblName.reservation].bulkCreate(
-        [
-          {
-            user_id,
-            room_id,
-            start_date,
-            end_date,
-          },
-        ],
+      const result = await models[tblName.reservation].create(
+        {
+          user_id,
+          room_id,
+          start_date,
+          end_date,
+        },
         { returning: true },
       );
       res.json(result);
