@@ -5,11 +5,12 @@ import tblName from '../../../database/name';
 // url: api/login
 const controller = {
   async post(req, res) {
-    const { id } = req.body;
+    const { id, password } = req.body;
     try {
       const user = await models[tblName.user].findOne({
         where: {
           user_id: id,
+          user_password: password,
         },
       });
       if (!user) {
