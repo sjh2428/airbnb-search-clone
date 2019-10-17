@@ -1,5 +1,5 @@
 // (hosts: 966 rows, rooms: 2250 rows)
-import _ from '../fx';
+import _ from '../fx/_';
 import models from './index';
 
 const csv = require('csvtojson');

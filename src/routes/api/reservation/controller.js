@@ -26,11 +26,7 @@ const controller = {
   async getByRoomId(req, res) {
     const { id } = req.params;
     try {
-      const reservation = await models[tblName.reservation].findAll({
-        where: {
-          room_id: id,
-        },
-      });
+      const reservation = await models[tblName.reservation].findByRoomId({ id });
       if (!reservation) {
         return res.status(401).json(reservation);
       }

@@ -36,6 +36,13 @@ const model = (sequelize, DataTypes) => {
     },
   );
 
+  Reservation.findByRoomId = ({ id }) =>
+    Reservation.findAll({
+      where: {
+        room_id: id,
+      },
+    });
+
   return Reservation;
 };
 
