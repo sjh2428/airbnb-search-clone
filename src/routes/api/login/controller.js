@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken';
 import models from '../../../database';
 import tblName from '../../../database/name';
+import errorHandler from '../../../middlewares/error';
+import ERROR_CODE from '../../../libraries/error-code';
 
 // url: api/login
 const controller = {
@@ -20,8 +22,7 @@ const controller = {
       res.cookie('jwttoken', token, { maxAge: 5 * 60 * 1000 });
       res.json(user);
     } catch (e) {
-      console.log(e);
-      res.status(500).end();
+      errorHandler(ERROR_CODE.INTERNAL_SERVER_ERROR, e, req, res);
     }
   },
 };

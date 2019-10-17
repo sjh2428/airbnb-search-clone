@@ -1,5 +1,7 @@
 import models from '../../../database';
 import tblName from '../../../database/name';
+import errorHandler from '../../../middlewares/error';
+import ERROR_CODE from '../../../libraries/error-code';
 
 const controller = {
   async post(req, res) {
@@ -18,21 +20,16 @@ const controller = {
       );
       res.json(result);
     } catch (e) {
-      console.log(e);
-      res.status(500).end();
+      errorHandler(ERROR_CODE.INTERNAL_SERVER_ERROR, e, req, res);
     }
   },
   async getByRoomId(req, res) {
     const { id } = req.params;
     try {
       const reservation = await models[tblName.reservation].findByRoomId({ id });
-      if (!reservation) {
-        return res.status(401).json(reservation);
-      }
       res.json(reservation);
     } catch (e) {
-      console.log(e);
-      res.status(500).end();
+      errorHandler(ERROR_CODE.INTERNAL_SERVER_ERROR, e, req, res);
     }
   },
 };

@@ -1,5 +1,7 @@
 import models from '../../../database';
 import tblName from '../../../database/name';
+import errorHandler from '../../../middlewares/error';
+import ERROR_CODE from '../../../libraries/error-code';
 
 // url: /api/room
 const controller = {
@@ -61,7 +63,7 @@ const controller = {
       );
       res.status(201).json(result);
     } catch (e) {
-      res.status(500).end();
+      errorHandler(ERROR_CODE.INTERNAL_SERVER_ERROR, e, req, res);
     }
   },
   async get(req, res) {
@@ -72,7 +74,7 @@ const controller = {
       const result = await models[tblName.room].findAndCountAllCustom({ where, limit, offset });
       res.json(result);
     } catch (e) {
-      res.status(500).end();
+      errorHandler(ERROR_CODE.INTERNAL_SERVER_ERROR, e, req, res);
     }
   },
 };
