@@ -23,6 +23,14 @@ const controller = {
       errorHandler(ERROR_CODE.INTERNAL_SERVER_ERROR, e, req, res);
     }
   },
+  async get(req, res) {
+    try {
+      const reservations = await models[tblName.reservation].findAll();
+      res.json(reservations);
+    } catch (e) {
+      errorHandler(ERROR_CODE.INTERNAL_SERVER_ERROR, e, req, res);
+    }
+  },
   async getByRoomId(req, res) {
     const { id } = req.params;
     try {
