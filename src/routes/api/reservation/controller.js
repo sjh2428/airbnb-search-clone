@@ -4,11 +4,13 @@ import tblName from '../../../database/name';
 const controller = {
   async post(req, res) {
     try {
-      const { user_id, room_id, start_date, end_date } = req.body;
+      const { user_id, room_id, guests, price, start_date, end_date } = req.body;
       const result = await models[tblName.reservation].create(
         {
           user_id,
           room_id,
+          guests,
+          price,
           start_date,
           end_date,
         },
