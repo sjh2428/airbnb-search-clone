@@ -22,7 +22,6 @@ const controller = {
       res.status(500).end();
     }
   },
-  get(req, res) {},
   async getByRoomId(req, res) {
     const { id } = req.params;
     try {
