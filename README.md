@@ -68,6 +68,8 @@
 | reservation_id | int  | PRIMARY KEY AUTO_INCREMENT NOT NULL               |
 | user_id        | int  | FOREIGN KEY REFERENCES tbl_users user_id NOT NULL |
 | room_id        | int  | FOREIGN KEY REFERENCES tbl_rooms room_id NOT NULL |
+| guests         | int  | NOT NULL                                          |
+| price          | int  | NOT NULL                                          |
 | start_date     | date | NOT NULL                                          |
 | end_date       | date | NOT NULL                                          |
 
