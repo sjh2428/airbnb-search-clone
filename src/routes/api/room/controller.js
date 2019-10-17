@@ -66,11 +66,10 @@ const controller = {
   },
   async get(req, res) {
     try {
-      let { where, limit, offset } = req.query;
+      const { limit, offset } = req.query;
+      let { where } = req.query;
       where = where ? JSON.parse(where) : {};
-      if (!limit) limit = 20;
-      if (!offset) offset = 0;
-      const result = await models[tblName.room].findAndCountAll({ where, limit, offset });
+      const result = await models[tblName.room].findAndCountAllCustom({ where, limit, offset });
       res.json(result);
     } catch (e) {
       res.status(500).end();

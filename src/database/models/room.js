@@ -108,6 +108,8 @@ const model = (sequelize, DataTypes) => {
     },
   );
 
+  Room.findAndCountAllCustom = (where, limit = 20, offset = 0) => Room.findAndCountAll({ where, limit, offset });
+
   return Room;
 };
 
