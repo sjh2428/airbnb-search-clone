@@ -18,6 +18,14 @@ const model = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false,
       },
+      guests: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        allowNull: false,
+      },
+      price: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        allowNull: false,
+      },
       start_date: {
         type: DataTypes.DATEONLY,
         allowNull: false,
