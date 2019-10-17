@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
+import React, { useReducer } from 'react';
 
-class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      number: 0,
-    };
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { value: state.value + 1 };
+    case 'DECREASE':
+      return { value: state.value - 1 };
+    default:
+      return state;
   }
+};
 
-  render() {
-    const { number } = this.state;
-    return (
-      <div>
-        <h1>{number}</h1>
-        <button
-          onClick={() => {
-            this.setState({ number: number + 1 });
-          }}>
-          +1
-        </button>
-      </div>
-    );
-  }
-}
+const Card = () => {
+  const [state, dispatch] = useReducer(reducer, { value: 0 });
+  return (
+    <div>
+      <p>
+        현재 Counter의 값은 <b>{state.value}</b>
+      </p>
+      <button onClick={() => dispatch({ type: 'INCREMENT' })}>+1</button>
+      <button onClick={() => dispatch({ type: 'INCREMENT' })}>-1</button>
+    </div>
+  );
+};
 
 export default Card;
