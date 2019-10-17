@@ -13,10 +13,4 @@ api.use('/room', onlyPrivate, room);
 api.use('/login', login);
 api.use('/reservation', onlyPrivate, reservation);
 
-api.get('/test', (req, res) => {
-  console.log(req.headers);
-  res.set('authorization', 123455);
-  res.end();
-});
-
 export default api;
