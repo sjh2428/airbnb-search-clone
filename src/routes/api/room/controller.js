@@ -71,7 +71,7 @@ const controller = {
       const { limit, offset } = req.query;
       let { where } = req.query;
       where = where ? JSON.parse(where) : {};
-      const result = await models[tblName.room].findAndCountAllCustom({ where, limit, offset });
+      const result = await models[tblName.room].findAndCountAllWithPaging({ where, limit, offset });
       res.json(result);
     } catch (e) {
       errorHandler(ERROR_CODE.INTERNAL_SERVER_ERROR, e, req, res);
