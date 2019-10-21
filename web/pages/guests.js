@@ -1,8 +1,8 @@
 import React from 'react';
-import SetPeople from '../components/guest-component';
+import GuestFilter from '../components/guest';
 
 const Guests = () => {
-  return <SetPeople />;
+  return <GuestFilter />;
 };
 
 export default Guests;
