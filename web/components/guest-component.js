@@ -3,15 +3,15 @@ import GuestCounter from './guest-count-component';
 
 const setGuestsReducer = (state, action) => {
   const getWho = {
-    성인: 'adultGuests',
-    어린이: 'childGuests',
-    유아: 'infantGuests',
+    adult: 'adultGuests',
+    child: 'childGuests',
+    infant: 'infantGuests',
   };
   const result = { ...state };
   const guestType = getWho[action.who];
   if (action.type === 'increment') {
     result[guestType] = state[guestType] + 1;
-    if (action.who !== '성인' && state.adultGuests === 0) {
+    if (action.who !== 'adult' && state.adultGuests === 0) {
       result.adultGuests = state.adultGuests + 1;
       result.totalGuests = state.totalGuests + 2;
       return result;
@@ -43,9 +43,9 @@ const SetPeople = () => {
   return (
     <div>
       <div>게스트 {state.totalGuests}명</div>
-      <GuestCounter type="성인" cnt={state.adultGuests} incHandler={dispatch} decHandler={dispatch} />
-      <GuestCounter type="어린이" cnt={state.childGuests} incHandler={dispatch} decHandler={dispatch} />
-      <GuestCounter type="유아" cnt={state.infantGuests} incHandler={dispatch} decHandler={dispatch} />
+      <GuestCounter who="adult" type="성인" cnt={state.adultGuests} handler={dispatch} />
+      <GuestCounter who="child" type="어린이" cnt={state.childGuests} handler={dispatch} />
+      <GuestCounter who="infant" type="유아" cnt={state.infantGuests} handler={dispatch} />
     </div>
   );
 };

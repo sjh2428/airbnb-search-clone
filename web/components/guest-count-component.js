@@ -1,14 +1,14 @@
 import React from 'react';
 
 const GuestCounter = props => {
-  const { type, cnt, incHandler, decHandler } = props;
+  const { type, cnt, who, handler } = props;
 
   return (
     <div>
       {type}
-      <button onClick={() => incHandler({ type: 'decrement', who: type })}>-</button>
+      <button onClick={() => handler({ type: 'decrement', who })}>-</button>
       {cnt}
-      <button onClick={() => decHandler({ type: 'increment', who: type })}>+</button>
+      <button onClick={() => handler({ type: 'increment', who })}>+</button>
     </div>
   );
 };
