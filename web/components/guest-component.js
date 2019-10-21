@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import GuestCounter from './guest-count-component';
+import guestCounters from './datas/guest-counter';
 
 const setGuestsReducer = (state, action) => {
   const getWho = {
@@ -43,9 +44,9 @@ const SetPeople = () => {
   return (
     <div>
       <div>게스트 {state.totalGuests}명</div>
-      <GuestCounter who="adult" type="성인" cnt={state.adultGuests} handler={dispatch} />
-      <GuestCounter who="child" type="어린이" cnt={state.childGuests} handler={dispatch} />
-      <GuestCounter who="infant" type="유아" cnt={state.infantGuests} handler={dispatch} />
+      {guestCounters(state).map((counter, idx) => (
+        <GuestCounter key={idx} who={counter.who} type={counter.type} cnt={counter.cnt} handler={dispatch} />
+      ))}
     </div>
   );
 };
