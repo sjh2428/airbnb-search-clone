@@ -3,4 +3,5 @@ node_modules
 .idea
 
 web/node_modules
+web/.next
 web/.idea
