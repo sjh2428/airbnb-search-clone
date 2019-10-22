@@ -1,10 +1,10 @@
 import React from 'react';
-import GuestFilter from '../components/guest';
+import Filters from '../components/filters';
 
 const Guests = () => {
   return (
     <>
-      <GuestFilter />
+      <Filters />
     </>
   );
 };
