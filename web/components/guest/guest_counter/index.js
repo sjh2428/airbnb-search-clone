@@ -3,7 +3,7 @@ import variables from '../guest-variables';
 import styled from 'styled-components';
 import { Button } from 'antd';
 
-const { ACTION_INCREMENT, ACTION_DECREMENT } = variables;
+const { ADULT_TYPE, ACTION_INCREMENT, ACTION_DECREMENT } = variables;
 
 const CounterWrapper = styled.div`
   width: 150px;
@@ -26,7 +26,11 @@ const GuestCounter = props => {
           -
         </Button>
         {cnt}+
-        <Button style={{ marginLeft: '5px' }} shape="circle" onClick={() => handler({ type: ACTION_INCREMENT, who })}>
+        <Button
+          disabled={type === ADULT_TYPE ? cnt >= 16 : cnt >= 5}
+          style={{ marginLeft: '5px' }}
+          shape="circle"
+          onClick={() => handler({ type: ACTION_INCREMENT, who })}>
           +
         </Button>
       </div>
