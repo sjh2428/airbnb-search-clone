@@ -34,6 +34,12 @@ const setGuestsReducer = (state, action) => {
     }
     result[guestType] = result[guestType] ? state[guestType] - 1 : 0;
     return result;
+  } else if (action.type === 'init') {
+    result[TOTAL_STATE_KEY] = 0;
+    result[ADULT_STATE_KEY] = 0;
+    result[CHILD_STATE_KEY] = 0;
+    result[INFANT_STATE_KEY] = 0;
+    return result;
   } else {
     throw new Error();
   }
