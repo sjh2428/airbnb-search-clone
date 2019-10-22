@@ -19,30 +19,44 @@ const setGuestsReducer = (state, action) => {
   };
   const result = { ...state };
   const guestType = getWho[action.who];
-  if (action.type === ACTION_INCREMENT) {
-    result[guestType] = state[guestType] + 1;
-    if (action.who !== ADULT_WHO && state[ADULT_STATE_KEY] === 0) {
-      result[ADULT_STATE_KEY] = state[ADULT_STATE_KEY] + 1;
-      result[TOTAL_STATE_KEY] = state[TOTAL_STATE_KEY] + 2;
-      return result;
-    } else {
-      result[TOTAL_STATE_KEY] = state[TOTAL_STATE_KEY] + 1;
-      return result;
-    }
-  } else if (action.type === ACTION_DECREMENT) {
-    if (result[guestType] > 0) {
-      result[TOTAL_STATE_KEY] = result[TOTAL_STATE_KEY] ? result[TOTAL_STATE_KEY] - 1 : 0;
-    }
-    result[guestType] = result[guestType] ? state[guestType] - 1 : 0;
-    return result;
-  } else if (action.type === ACTION_INIT) {
-    result[TOTAL_STATE_KEY] = 0;
-    result[ADULT_STATE_KEY] = 0;
-    result[CHILD_STATE_KEY] = 0;
-    result[INFANT_STATE_KEY] = 0;
-    return result;
-  } else {
-    throw new Error();
+  switch (action.type) {
+    case ACTION_INCREMENT:
+      if (action.who !== ADULT_WHO && state[ADULT_STATE_KEY] === 0) {
+        return {
+          ...state,
+          [guestType]: state[guestType] + 1,
+          [ADULT_STATE_KEY]: state[ADULT_STATE_KEY] + 1,
+          [TOTAL_STATE_KEY]: state[TOTAL_STATE_KEY] + 2,
+        };
+      } else {
+        return {
+          ...state,
+          [guestType]: state[guestType] + 1,
+          [TOTAL_STATE_KEY]: state[TOTAL_STATE_KEY] + 1,
+        };
+      }
+    case ACTION_DECREMENT:
+      if (result[guestType] > 0) {
+        return {
+          ...state,
+          [TOTAL_STATE_KEY]: state[TOTAL_STATE_KEY] ? state[TOTAL_STATE_KEY] - 1 : 0,
+          [guestType]: state[guestType] ? state[guestType] - 1 : 0,
+        };
+      }
+      return {
+        ...state,
+        [guestType]: state[guestType] ? state[guestType] - 1 : 0,
+      };
+    case ACTION_INIT:
+      return {
+        ...state,
+        [TOTAL_STATE_KEY]: 0,
+        [ADULT_STATE_KEY]: 0,
+        [CHILD_STATE_KEY]: 0,
+        [INFANT_STATE_KEY]: 0,
+      };
+    default:
+      throw new Error();
   }
 };
 
