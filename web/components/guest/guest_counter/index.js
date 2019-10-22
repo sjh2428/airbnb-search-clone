@@ -1,5 +1,5 @@
 import React from 'react';
-import variables from './guest-variables';
+import variables from '../guest-variables';
 
 const { ACTION_INCREMENT, ACTION_DECREMENT } = variables;
 

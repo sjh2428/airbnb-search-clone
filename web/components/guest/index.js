@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
-import GuestCounter from './guest-counter';
+import GuestCounter from './guest_counter';
 import setGuestsReducer from './guest-reducer';
-import guestCounters from './guest-datas';
+import guestCounters from './guest_counter/counter-datas';
 import variables from './guest-variables';
 
 const { TOTAL_STATE_KEY, ADULT_STATE_KEY, CHILD_STATE_KEY, INFANT_STATE_KEY } = variables;

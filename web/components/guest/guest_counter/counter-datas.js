@@ -1,4 +1,4 @@
-import variables from './guest-variables';
+import variables from '../guest-variables';
 
 const { ADULT_WHO, ADULT_TYPE, CHILD_WHO, CHILD_TYPE, INFANT_WHO, INFANT_TYPE } = variables;
 
