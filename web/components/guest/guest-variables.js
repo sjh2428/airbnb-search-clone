@@ -15,4 +15,5 @@ export default {
 
   ACTION_INCREMENT: 'increment',
   ACTION_DECREMENT: 'decrement',
+  ACTION_INIT: 'init',
 };

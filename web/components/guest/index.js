@@ -5,7 +5,7 @@ import guestCounters from './guest_counter/counter-datas';
 import variables from './guest-variables';
 import { Popover, Button } from 'antd';
 
-const { TOTAL_STATE_KEY, ADULT_STATE_KEY, CHILD_STATE_KEY, INFANT_STATE_KEY } = variables;
+const { TOTAL_STATE_KEY, ADULT_STATE_KEY, CHILD_STATE_KEY, INFANT_STATE_KEY, ACTION_INIT } = variables;
 
 const SetPeople = () => {
   const initState = {
@@ -27,7 +27,7 @@ const SetPeople = () => {
       ))}
       content={
         <div>
-          <Button onClick={() => dispatch({ type: 'init' })}>지우기</Button>
+          <Button onClick={() => dispatch({ type: ACTION_INIT })}>지우기</Button>
           <Button onClick={() => setVisible(false)}>저장</Button>
         </div>
       }
