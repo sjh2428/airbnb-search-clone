@@ -19,15 +19,21 @@ const SetPeople = () => {
   const [visible, setVisible] = useState(false);
   const handleVisible = v => setVisible(v);
 
+  const guestCounterJSX = guestCounters(state).map((counter, idx) => {
+    const { who, type, cnt } = counter;
+    const props = { key: idx, who, type, cnt, handler: dispatch };
+    return <GuestCounter {...props} />;
+  });
+
   return (
     <Popover
       placement="bottomLeft"
-      title={guestCounters(state).map((counter, idx) => (
-        <GuestCounter key={idx} who={counter.who} type={counter.type} cnt={counter.cnt} handler={dispatch} />
-      ))}
+      title={guestCounterJSX}
       content={
         <div>
-          <Button onClick={() => dispatch({ type: ACTION_INIT })}>지우기</Button>
+          <Button onClick={() => dispatch({ type: ACTION_INIT })} disabled={state[TOTAL_STATE_KEY] ? false : true}>
+            지우기
+          </Button>
           <Button onClick={() => setVisible(false)}>저장</Button>
         </div>
       }
