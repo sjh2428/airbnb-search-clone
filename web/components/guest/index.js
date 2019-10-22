@@ -4,6 +4,7 @@ import setGuestsReducer from './guest-reducer';
 import guestCounters from './guest_counter/counter-datas';
 import variables from './guest-variables';
 import { Popover, Button } from 'antd';
+import styled from 'styled-components';
 
 const { TOTAL_STATE_KEY, ADULT_STATE_KEY, CHILD_STATE_KEY, INFANT_STATE_KEY, ACTION_INIT } = variables;
 
@@ -13,6 +14,11 @@ const initState = {
   [CHILD_STATE_KEY]: 0,
   [INFANT_STATE_KEY]: 0,
 };
+
+const ButtonOnBottomWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const SetPeople = () => {
   const [state, dispatch] = useReducer(setGuestsReducer, initState);
@@ -28,12 +34,12 @@ const SetPeople = () => {
         return <GuestCounter {...props} />;
       })}
       content={
-        <div>
+        <ButtonOnBottomWrapper>
           <Button onClick={() => dispatch({ type: ACTION_INIT })} disabled={!state[TOTAL_STATE_KEY]}>
             지우기
           </Button>
           <Button onClick={() => setVisible(false)}>저장</Button>
-        </div>
+        </ButtonOnBottomWrapper>
       }
       trigger="click"
       visible={visible}
