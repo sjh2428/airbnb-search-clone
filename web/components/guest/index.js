@@ -38,7 +38,10 @@ const SetPeople = () => {
       trigger="click"
       visible={visible}
       onVisibleChange={handleVisible}>
-      <Button>게스트 {state[TOTAL_STATE_KEY]}명</Button>
+      <Button>
+        게스트 {state[ADULT_STATE_KEY] + state[CHILD_STATE_KEY]}명{' '}
+        {state[INFANT_STATE_KEY] ? `유아 ${state[INFANT_STATE_KEY]}명` : ''}
+      </Button>
     </Popover>
   );
 };
