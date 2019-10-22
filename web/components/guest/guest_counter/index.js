@@ -18,7 +18,11 @@ const GuestCounter = props => {
     <CounterWrapper>
       {type}
       <div>
-        <Button style={{ marginRight: '5px' }} shape="circle" onClick={() => handler({ type: ACTION_DECREMENT, who })}>
+        <Button
+          disabled={!cnt}
+          style={{ marginRight: '5px' }}
+          shape="circle"
+          onClick={() => handler({ type: ACTION_DECREMENT, who })}>
           -
         </Button>
         {cnt}+

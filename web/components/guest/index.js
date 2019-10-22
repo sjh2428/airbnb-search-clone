@@ -29,7 +29,7 @@ const SetPeople = () => {
       })}
       content={
         <div>
-          <Button onClick={() => dispatch({ type: ACTION_INIT })} disabled={state[TOTAL_STATE_KEY] ? false : true}>
+          <Button onClick={() => dispatch({ type: ACTION_INIT })} disabled={!state[TOTAL_STATE_KEY]}>
             지우기
           </Button>
           <Button onClick={() => setVisible(false)}>저장</Button>
