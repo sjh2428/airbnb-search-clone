@@ -19,11 +19,15 @@ const EntireContextProvider = ({ children }) => {
   const [startDate, SetStartDate] = useState(null);
   const [endDate, SetEndDate] = useState(null);
 
+  const [minPrice, setMinPrice] = useState(0.0000001);
+  const [maxPrice, setMaxPrice] = useState(1);
+
   const props = {
     value: {
       filter: {
         guest: { state, dispatch },
         date: { startDate, SetStartDate, endDate, SetEndDate },
+        price: { minPrice, setMinPrice, maxPrice, setMaxPrice },
       },
     },
   };
