@@ -2,6 +2,7 @@ import React from 'react';
 import Filters from '../components/filters';
 import styled from 'styled-components';
 import EntireContextProvider from '../contexts/entire';
+import CardContainer from '../components/card_container';
 
 const FilterWrapper = styled.div`
   width: 100%;
@@ -15,6 +16,7 @@ const Guests = () => {
       <FilterWrapper>
         <Filters />
       </FilterWrapper>
+      <CardContainer />
     </EntireContextProvider>
   );
 };
