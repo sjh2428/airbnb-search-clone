@@ -1,6 +1,7 @@
 import React from 'react';
 import Filters from '../components/filters';
 import styled from 'styled-components';
+import EntireContextProvider from '../components/entire_context/entire-context';
 
 const FilterWrapper = styled.div`
   width: 100%;
@@ -10,9 +11,11 @@ const FilterWrapper = styled.div`
 
 const Guests = () => {
   return (
-    <FilterWrapper>
-      <Filters />
-    </FilterWrapper>
+    <EntireContextProvider>
+      <FilterWrapper>
+        <Filters />
+      </FilterWrapper>
+    </EntireContextProvider>
   );
 };
 
