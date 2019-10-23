@@ -29,13 +29,12 @@ const setGuestsReducer = (state, action) => {
           [ADULT_STATE_KEY]: state[ADULT_STATE_KEY] + 1,
           [TOTAL_STATE_KEY]: state[TOTAL_STATE_KEY] + 2,
         };
-      } else {
-        return {
-          ...state,
-          [guestType]: state[guestType] + 1,
-          [TOTAL_STATE_KEY]: state[TOTAL_STATE_KEY] + 1,
-        };
       }
+      return {
+        ...state,
+        [guestType]: state[guestType] + 1,
+        [TOTAL_STATE_KEY]: state[TOTAL_STATE_KEY] + 1,
+      };
     case ACTION_DECREMENT:
       if (result[guestType] > 0) {
         return {
@@ -50,7 +49,6 @@ const setGuestsReducer = (state, action) => {
       };
     case ACTION_INIT:
       return {
-        ...state,
         [TOTAL_STATE_KEY]: 0,
         [ADULT_STATE_KEY]: 0,
         [CHILD_STATE_KEY]: 0,
