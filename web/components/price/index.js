@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { EntireContext } from '../../contexts/entire';
 import { Popover, Slider, Button, InputNumber } from 'antd';
 import { SpaceBetween } from '../../styles';
 
 const Price = () => {
   const { minPrice, setMinPrice, maxPrice, setMaxPrice } = useContext(EntireContext).filter.price;
+  const [visible, setVisible] = useState(false);
+  const handleVisible = v => setVisible(v);
 
   const setPrices = ([min, max]) => {
     setMinPrice(min);
@@ -31,15 +33,15 @@ const Price = () => {
     ),
     content: (
       <SpaceBetween>
-        <Button onClick={() => setPrices([0, 0])}>지우기</Button>
-        <Button>저장</Button>
+        <Button onClick={() => setPrices([0, 1])}>지우기</Button>
+        <Button onClick={() => setVisible(false)}>저장</Button>
       </SpaceBetween>
     ),
     trigger: 'click',
   };
 
   return (
-    <Popover {...popoverProps}>
+    <Popover {...popoverProps} visible={visible} onVisibleChange={handleVisible}>
       <Button>가격</Button>
     </Popover>
   );
