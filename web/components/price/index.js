@@ -31,7 +31,7 @@ const Price = () => {
     ),
     content: (
       <SpaceBetween>
-        <Button>지우기</Button>
+        <Button onClick={() => setPrices([0, 0])}>지우기</Button>
         <Button>저장</Button>
       </SpaceBetween>
     ),
