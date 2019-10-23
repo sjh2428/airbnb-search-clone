@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
 import setGuestsReducer from '../components/guest/guest-reducer';
 import variables from '../components/guest/guest-variables';
 
@@ -15,7 +15,20 @@ const initState = {
 
 const EntireContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(setGuestsReducer, initState);
-  return <EntireContext.Provider value={{ filter: { state, dispatch } }}>{children}</EntireContext.Provider>;
+
+  const [startDate, SetStartDate] = useState(null);
+  const [endDate, SetEndDate] = useState(null);
+
+  const props = {
+    value: {
+      filter: {
+        guest: { state, dispatch },
+        date: { startDate, SetStartDate, endDate, SetEndDate },
+      },
+    },
+  };
+
+  return <EntireContext.Provider {...props}>{children}</EntireContext.Provider>;
 };
 
 export default EntireContextProvider;

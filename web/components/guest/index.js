@@ -14,7 +14,7 @@ const ButtonOnBottomWrapper = styled.div`
 `;
 
 const SetPeople = () => {
-  const { state, dispatch } = useContext(EntireContext).filter;
+  const { state, dispatch } = useContext(EntireContext).filter.guest;
   const [visible, setVisible] = useState(false);
   const handleVisible = v => setVisible(v);
 
