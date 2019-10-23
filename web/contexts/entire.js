@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
-import setGuestsReducer from '../guest/guest-reducer';
-import variables from '../guest/guest-variables';
+import setGuestsReducer from '../components/guest/guest-reducer';
+import variables from '../components/guest/guest-variables';
 
 export const EntireContext = React.createContext();
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Filters from '../components/filters';
 import styled from 'styled-components';
-import EntireContextProvider from '../components/entire_context';
+import EntireContextProvider from '../contexts/entire';
 
 const FilterWrapper = styled.div`
   width: 100%;
