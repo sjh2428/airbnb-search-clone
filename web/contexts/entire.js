@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from 'react';
 import setGuestsReducer from '../components/guest/guest-reducer';
 import variables from '../components/guest/guest-variables';
+import { MIN_PRICE, MAX_PRICE } from '../components/price/price-variables';
 
 export const EntireContext = React.createContext();
 
@@ -19,8 +20,8 @@ const EntireContextProvider = ({ children }) => {
   const [startDate, SetStartDate] = useState(null);
   const [endDate, SetEndDate] = useState(null);
 
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1);
+  const [minPrice, setMinPrice] = useState(MIN_PRICE);
+  const [maxPrice, setMaxPrice] = useState(MAX_PRICE);
 
   const props = {
     value: {
