@@ -11,12 +11,13 @@ const {
   ADULT_WHO,
 } = variables;
 
+const getWho = {
+  adult: ADULT_STATE_KEY,
+  child: CHILD_STATE_KEY,
+  infant: INFANT_STATE_KEY,
+};
+
 const setGuestsReducer = (state, action) => {
-  const getWho = {
-    adult: ADULT_STATE_KEY,
-    child: CHILD_STATE_KEY,
-    infant: INFANT_STATE_KEY,
-  };
   const result = { ...state };
   const guestType = getWho[action.who];
   switch (action.type) {
