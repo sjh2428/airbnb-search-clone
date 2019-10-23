@@ -4,7 +4,7 @@ import guestCounters from './guest_counter/counter-datas';
 import variables from './guest-variables';
 import { Popover, Button } from 'antd';
 import styled from 'styled-components';
-import { EntireContext } from '../entire_context/entire-context';
+import { EntireContext } from '../entire_context';
 
 const { TOTAL_STATE_KEY, ADULT_STATE_KEY, CHILD_STATE_KEY, INFANT_STATE_KEY, ACTION_INIT } = variables;
 
