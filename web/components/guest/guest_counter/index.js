@@ -1,9 +1,7 @@
 import React from 'react';
-import variables from '../guest-variables';
+import { ADULT_TYPE, ACTION_INCREMENT, ACTION_DECREMENT } from '../guest-variables';
 import { Button } from 'antd';
 import { SpaceBetween } from '../../../styles';
-
-const { ADULT_TYPE, ACTION_INCREMENT, ACTION_DECREMENT } = variables;
 
 const GuestCounter = props => {
   const { type, cnt, who, handler } = props;

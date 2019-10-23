@@ -1,11 +1,14 @@
 import React, { useState, useReducer } from 'react';
 import setGuestsReducer from '../components/guest/guest-reducer';
-import variables from '../components/guest/guest-variables';
+import {
+  TOTAL_STATE_KEY,
+  ADULT_STATE_KEY,
+  CHILD_STATE_KEY,
+  INFANT_STATE_KEY,
+} from '../components/guest/guest-variables';
 import { MIN_PRICE, MAX_PRICE } from '../components/price/price-variables';
 
 export const EntireContext = React.createContext();
-
-const { TOTAL_STATE_KEY, ADULT_STATE_KEY, CHILD_STATE_KEY, INFANT_STATE_KEY } = variables;
 
 const initState = {
   [TOTAL_STATE_KEY]: 0,

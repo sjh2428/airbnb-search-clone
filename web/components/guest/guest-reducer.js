@@ -1,6 +1,4 @@
-import variables from './guest-variables';
-
-const {
+import {
   TOTAL_STATE_KEY,
   ADULT_STATE_KEY,
   CHILD_STATE_KEY,
@@ -9,7 +7,7 @@ const {
   ACTION_DECREMENT,
   ACTION_INIT,
   ADULT_WHO,
-} = variables;
+} from './guest-variables';
 
 const getWho = {
   adult: ADULT_STATE_KEY,

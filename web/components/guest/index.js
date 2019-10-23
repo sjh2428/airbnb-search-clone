@@ -1,12 +1,10 @@
 import React, { useState, useContext } from 'react';
 import GuestCounter from './guest_counter';
 import guestCounters from './guest_counter/counter-datas';
-import variables from './guest-variables';
+import { TOTAL_STATE_KEY, ADULT_STATE_KEY, CHILD_STATE_KEY, INFANT_STATE_KEY, ACTION_INIT } from './guest-variables';
 import { Popover, Button } from 'antd';
 import { EntireContext } from '../../contexts/entire';
 import { SpaceBetween } from '../../styles';
-
-const { TOTAL_STATE_KEY, ADULT_STATE_KEY, CHILD_STATE_KEY, INFANT_STATE_KEY, ACTION_INIT } = variables;
 
 const SetPeople = () => {
   const { state, dispatch } = useContext(EntireContext).filter.guest;
