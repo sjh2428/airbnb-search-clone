@@ -1,19 +1,12 @@
-import React, { useReducer, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import GuestCounter from './guest_counter';
-import setGuestsReducer from './guest-reducer';
 import guestCounters from './guest_counter/counter-datas';
 import variables from './guest-variables';
 import { Popover, Button } from 'antd';
 import styled from 'styled-components';
+import { EntireContext } from '../entire_context/entire-context';
 
 const { TOTAL_STATE_KEY, ADULT_STATE_KEY, CHILD_STATE_KEY, INFANT_STATE_KEY, ACTION_INIT } = variables;
-
-const initState = {
-  [TOTAL_STATE_KEY]: 0,
-  [ADULT_STATE_KEY]: 0,
-  [CHILD_STATE_KEY]: 0,
-  [INFANT_STATE_KEY]: 0,
-};
 
 const ButtonOnBottomWrapper = styled.div`
   display: flex;
@@ -21,7 +14,7 @@ const ButtonOnBottomWrapper = styled.div`
 `;
 
 const SetPeople = () => {
-  const [state, dispatch] = useReducer(setGuestsReducer, initState);
+  const { state, dispatch } = useContext(EntireContext).filter;
   const [visible, setVisible] = useState(false);
   const handleVisible = v => setVisible(v);
 
