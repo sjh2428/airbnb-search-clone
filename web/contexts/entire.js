@@ -19,7 +19,7 @@ const EntireContextProvider = ({ children }) => {
   const [startDate, SetStartDate] = useState(null);
   const [endDate, SetEndDate] = useState(null);
 
-  const [minPrice, setMinPrice] = useState(0.0000001);
+  const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1);
 
   const props = {

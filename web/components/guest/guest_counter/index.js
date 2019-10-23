@@ -1,21 +1,15 @@
 import React from 'react';
 import variables from '../guest-variables';
-import styled from 'styled-components';
 import { Button } from 'antd';
+import { SpaceBetween } from '../../../styles';
 
 const { ADULT_TYPE, ACTION_INCREMENT, ACTION_DECREMENT } = variables;
-
-const CounterWrapper = styled.div`
-  width: 150px;
-  display: flex;
-  justify-content: space-between;
-`;
 
 const GuestCounter = props => {
   const { type, cnt, who, handler } = props;
 
   return (
-    <CounterWrapper>
+    <SpaceBetween style={{ width: '150px' }}>
       {type}
       <div>
         <Button
@@ -34,7 +28,7 @@ const GuestCounter = props => {
           +
         </Button>
       </div>
-    </CounterWrapper>
+    </SpaceBetween>
   );
 };
 
