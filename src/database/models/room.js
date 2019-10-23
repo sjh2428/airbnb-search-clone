@@ -109,7 +109,7 @@ const model = (sequelize, DataTypes) => {
   );
 
   Room.findAndCountAllWithPaging = ({ where, limit = 20, offset = 0 }) =>
-    Room.findAndCountAll({ where, limit, offset });
+    Room.findAndCountAll({ where, limit: Number(limit), offset: Number(offset) });
 
   return Room;
 };
