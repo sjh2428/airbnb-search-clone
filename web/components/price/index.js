@@ -40,9 +40,16 @@ const Price = () => {
     trigger: 'click',
   };
 
+  const getBtnChild = () => {
+    if (minPrice !== 0 && maxPrice !== 1) return `₩${minPrice * 1000000} ~ ₩${maxPrice * 1000000}`;
+    else if (minPrice !== 0 && maxPrice) return `₩${minPrice * 1000000}+`;
+    else if (minPrice === 0 && maxPrice !== 1) return `최대 ₩${maxPrice * 1000000}`;
+    return '가격';
+  };
+
   return (
     <Popover {...popoverProps} visible={visible} onVisibleChange={handleVisible}>
-      <Button>가격</Button>
+      <Button>{getBtnChild()}</Button>
     </Popover>
   );
 };
