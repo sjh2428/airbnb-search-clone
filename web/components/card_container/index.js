@@ -22,6 +22,8 @@ const initData = {
   loading: true,
 };
 
+const ROW_PRICE = price => price * EXCHANGE_RATE * PRICE_STEP;
+
 const CardContainer = () => {
   const [containerState, setContainerdState] = useState(initData);
   const {
@@ -41,8 +43,8 @@ const CardContainer = () => {
           card: _.go(
             rows,
             L.filter(row => row.accommodates >= guestState.totalGuests),
-            L.filter(row => row.price * EXCHANGE_RATE * PRICE_STEP >= minPrice),
-            L.filter(row => row.price * EXCHANGE_RATE * PRICE_STEP <= maxPrice),
+            L.filter(row => ROW_PRICE(row.price) >= minPrice),
+            L.filter(row => ROW_PRICE(row.price) <= maxPrice),
             L.map(row => <CardGrid key={row.room_id} {...row} />),
             _.take(20),
           ),
