@@ -11,6 +11,10 @@ const ImageContainer = styled.div`
   background-color: #efefef;
   display: flex;
   justify-content: center;
+  & > img {
+    max-width: 100%;
+    max-height: 250px;
+  }
 `;
 
 const CardGrid = ({
@@ -42,7 +46,7 @@ const CardGrid = ({
 
   const CardCover = (
     <ImageContainer>
-      <img src={room_picture_url} style={{ maxWidth: '100%', maxHeight: '250px' }} />
+      <img src={room_picture_url} />
     </ImageContainer>
   );
 

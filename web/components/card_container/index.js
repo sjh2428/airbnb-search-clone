@@ -33,6 +33,9 @@ const CardContainer = () => {
   useEffect(() => {
     console.log('filtering');
     console.log(guestState, startDate, endDate, minPrice, maxPrice);
+    //  fetch룰 분라해 주세요
+    // 데이터를 가져오는 로직과 연산하는 로직울 뷴리하여 종속성을 제거하고 재활용 가능하도록 수정해 주세요
+    // take의 갯수는  상수로 빼주세요
     fetch(`http://${REMOTE}:${REMOTE_PORT}/api/room`)
       .then(res => res.json())
       .then(json => {
