@@ -23,6 +23,7 @@ const initData = {
 };
 
 const ROW_PRICE = price => price * EXCHANGE_RATE * PRICE_STEP;
+const TAKE_COUNT = 20;
 
 const CardContainer = () => {
   const [containerState, setContainerdState] = useState(initData);
@@ -46,7 +47,7 @@ const CardContainer = () => {
             L.filter(row => ROW_PRICE(row.price) >= minPrice),
             L.filter(row => ROW_PRICE(row.price) <= maxPrice),
             L.map(row => <CardGrid key={row.room_id} {...row} />),
-            _.take(20),
+            _.take(TAKE_COUNT),
           ),
           fetchData: rows,
         });
@@ -64,7 +65,7 @@ const CardContainer = () => {
       const next = _.go(
         rows,
         L.map(row => <CardGrid key={row.room_id} {...row} />),
-        _.take(document.querySelector('.card-container').children.length + 20),
+        _.take(document.querySelector('.card-container').children.length + TAKE_COUNT),
       );
       setContainerdState({
         ...containerState,
