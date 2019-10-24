@@ -5,6 +5,7 @@ import { REMOTE, REMOTE_PORT } from '../../env';
 import L from '../../fx/L';
 import _ from '../../fx/_';
 import { EntireContext } from '../../contexts/entire';
+import { PRICE_STEP, EXCHANGE_RATE } from '../price/price-variables';
 
 const Container = styled.div`
   width: 100%;
@@ -24,22 +25,29 @@ const initData = {
 const CardContainer = () => {
   const [containerState, setContainerdState] = useState(initData);
   const {
-    guest: { state },
+    guest: { state: guestState },
     date: { startDate, endDate },
     price: { minPrice, maxPrice },
   } = useContext(EntireContext).filter;
-  const filters = [state, startDate, endDate, minPrice, maxPrice];
 
   useEffect(() => {
-    if (!containerState.loading) return;
+    console.log('filtering');
+    console.log(guestState, startDate, endDate, minPrice, maxPrice);
     fetch(`http://${REMOTE}:${REMOTE_PORT}/api/room`)
       .then(res => res.json())
       .then(json => {
         const { rows, count } = json;
         setContainerdState({
           loading: false,
-          totalCount: `${count}개의 숙소`,
-          card: _.go(rows, L.map(row => <CardGrid key={row.room_id} {...row} />), _.take(20)),
+          totalCount: `${count}개의 숙소중...`,
+          card: _.go(
+            rows,
+            L.filter(row => row.accommodates >= guestState.totalGuests),
+            L.filter(row => row.price * EXCHANGE_RATE * PRICE_STEP >= minPrice),
+            L.filter(row => row.price * EXCHANGE_RATE * PRICE_STEP <= maxPrice),
+            L.map(row => <CardGrid key={row.room_id} {...row} />),
+            _.take(20),
+          ),
           fetchData: rows,
         });
         window.addEventListener('scroll', scrollHandler(rows));
@@ -48,7 +56,7 @@ const CardContainer = () => {
         console.log(err);
       });
     return () => window.removeEventListener('scroll', scrollHandler());
-  }, [...filters]);
+  }, [guestState, startDate, endDate, minPrice, maxPrice]);
 
   const scrollHandler = rows => () => {
     const { scrollHeight, clientHeight } = document.body;
@@ -67,7 +75,7 @@ const CardContainer = () => {
 
   return (
     <>
-      <h2>{containerState.totalCount}</h2>
+      <h2>{containerState.totalCount ? containerState.totalCount : '불러오는 중...'}</h2>
       <hr style={{ border: '1px solid #EBEBEB' }} />
       <Container className={'card-container'}>{containerState.card}</Container>
     </>

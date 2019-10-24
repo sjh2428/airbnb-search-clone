@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { EXCHANGE_RATE } from '../price/price-variables';
 
 const DesWrapper = styled.div`
   display: grid;
@@ -41,7 +42,7 @@ const Description = ({
         <TopMargin>
           {bed_type} {beds}개
         </TopMargin>
-        <div>₩{price * 1170}</div>
+        <div>₩{price * EXCHANGE_RATE}</div>
       </div>
       <div>
         <div>{`🤩 ${(reviews_score / 20).toFixed(1)}(${reviewers})`}</div>
