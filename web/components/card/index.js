@@ -42,7 +42,7 @@ const CardGrid = ({
 
   const CardCover = (
     <ImageContainer>
-      <img src={room_picture_url} style={{ width: '300px', height: '250px' }} />
+      <img src={room_picture_url} style={{ maxWidth: '100%', maxHeight: '250px' }} />
     </ImageContainer>
   );
 
