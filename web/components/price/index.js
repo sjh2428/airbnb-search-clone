@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { EntireContext } from '../../contexts/entire';
 import { Popover, Slider, Button, InputNumber } from 'antd';
 import { SpaceBetween } from '../../styles';
-import { MIN_PRICE, MAX_PRICE, PRICE_STEP } from './price-variables';
+import { MIN_PRICE, MAX_PRICE, PRICE_STEP, PRICE_UNIT } from './price-variables';
 
 const Price = () => {
   const { minPrice, setMinPrice, maxPrice, setMaxPrice } = useContext(EntireContext).filter.price;
@@ -28,8 +28,8 @@ const Price = () => {
     title: (
       <>
         <Slider {...sliderProps} onChange={setPrices} />
-        <InputNumber value={minPrice * (1 / PRICE_STEP)} onChange={min => setMinPrice(min / (1 / PRICE_STEP))} />
-        <InputNumber value={maxPrice * (1 / PRICE_STEP)} onChange={max => setMaxPrice(max / (1 / PRICE_STEP))} />
+        <InputNumber value={minPrice * PRICE_UNIT} onChange={min => setMinPrice(min / PRICE_UNIT)} />
+        <InputNumber value={maxPrice * PRICE_UNIT} onChange={max => setMaxPrice(max / PRICE_UNIT)} />
       </>
     ),
     content: (
@@ -43,11 +43,11 @@ const Price = () => {
 
   const getBtnChild = () => {
     if (minPrice !== MIN_PRICE && maxPrice !== MAX_PRICE) {
-      return `₩${minPrice * (1 / PRICE_STEP)} ~ ₩${maxPrice * (1 / PRICE_STEP)}`;
+      return `₩${minPrice * PRICE_UNIT} ~ ₩${maxPrice * PRICE_UNIT}`;
     } else if (minPrice !== MIN_PRICE && maxPrice === MAX_PRICE) {
-      return `₩${minPrice * (1 / PRICE_STEP)}+`;
+      return `₩${minPrice * PRICE_UNIT}+`;
     } else if (minPrice === MIN_PRICE && maxPrice !== MAX_PRICE) {
-      return `최대 ₩${maxPrice * (1 / PRICE_STEP)}`;
+      return `최대 ₩${maxPrice * PRICE_UNIT}`;
     }
     return '가격';
   };
