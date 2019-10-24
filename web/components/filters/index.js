@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React from 'react';
 import Guest from '../guest';
 import Date from '../date';
 import Price from '../price';
