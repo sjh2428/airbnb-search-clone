@@ -39,6 +39,7 @@
     "@babel/runtime": "^7.6.2",
     "cookie-parser": "^1.4.4",
     "core-js": "^3.2.1",
+    "cors": "^2.8.5",
     "csvtojson": "^2.0.10",
     "dotenv": "^8.1.0",
     "ejs": "^2.7.1",

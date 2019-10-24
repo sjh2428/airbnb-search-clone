@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import route from './routes';
 
 dotenv.config();
@@ -14,6 +15,8 @@ app.use(helmet());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 app.set('trust proxy', 1);
+
+app.use(cors());
 
 app.use('/', route);
 
