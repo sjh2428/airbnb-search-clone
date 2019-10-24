@@ -10,13 +10,20 @@ const FilterWrapper = styled.div`
   padding: 5px;
 `;
 
+const CardContainerWrapper = styled.div`
+  width: 100%;
+  padding: 2rem;
+`;
+
 const Guests = () => {
   return (
     <EntireContextProvider>
       <FilterWrapper>
         <Filters />
       </FilterWrapper>
-      <CardContainer />
+      <CardContainerWrapper>
+        <CardContainer />
+      </CardContainerWrapper>
     </EntireContextProvider>
   );
 };
