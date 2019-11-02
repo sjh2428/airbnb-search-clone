@@ -1,6 +1,19 @@
 # 멤버십 프로젝트 - 에어비엔비 저장소
 
-### BE
+### dotenv
+
+```
+COOKIE_SECRET=
+
+JWT_KEY=
+
+NODE_ENV=development
+
+DB_DEV_USERNAME=
+DB_DEV_PW=
+DB_DEV_SCHEMA=
+DB_DEV_HOST=
+```
 
 #### DB
 
@@ -72,5 +85,3 @@
 | price          | int  | NOT NULL                                          |
 | start_date     | date | NOT NULL                                          |
 | end_date       | date | NOT NULL                                          |
-
-### FE
