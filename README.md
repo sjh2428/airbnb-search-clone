@@ -1,6 +1,6 @@
 # 멤버십 프로젝트 - 에어비엔비 저장소
 
-### dotenv
+### dotenv in root
 
 ```
 COOKIE_SECRET=
@@ -13,6 +13,15 @@ DB_DEV_USERNAME=
 DB_DEV_PW=
 DB_DEV_SCHEMA=
 DB_DEV_HOST=
+```
+
+### env.js in /web
+
+```=javascript
+export const REMOTE = ''; // REMOTE_IP_ADDRESS(String)
+export const REMOTE_PORT = ; // REMOTE_PORT(Number)
+
+export default {};
 ```
 
 #### DB
